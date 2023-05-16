@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeelingWeb.Shared", "FeelingWeb.Shared\FeelingWeb.Shared.csproj", "{0A29F9D1-BAEC-499A-81DF-41AA9EF525C6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeelingWeb.API", "FeelingWeb.API\FeelingWeb.API.csproj", "{7ED913AA-CA98-4F11-935F-DA21299676AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeelingWeb.WEB", "FeelingWeb.WEB\FeelingWeb.WEB.csproj", "{681ED648-CFE4-4266-8A6E-6D905B8F19BE}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A29F9D1-BAEC-499A-81DF-41AA9EF525C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A29F9D1-BAEC-499A-81DF-41AA9EF525C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A29F9D1-BAEC-499A-81DF-41AA9EF525C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A29F9D1-BAEC-499A-81DF-41AA9EF525C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ED913AA-CA98-4F11-935F-DA21299676AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ED913AA-CA98-4F11-935F-DA21299676AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ED913AA-CA98-4F11-935F-DA21299676AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ED913AA-CA98-4F11-935F-DA21299676AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{681ED648-CFE4-4266-8A6E-6D905B8F19BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{681ED648-CFE4-4266-8A6E-6D905B8F19BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{681ED648-CFE4-4266-8A6E-6D905B8F19BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{681ED648-CFE4-4266-8A6E-6D905B8F19BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
