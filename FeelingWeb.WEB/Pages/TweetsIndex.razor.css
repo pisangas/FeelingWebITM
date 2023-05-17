@@ -1,0 +1,33 @@
+::deep .quickgrid[theme=corporate] {
+    font-family: 'Times New Roman', 'Times New Roman', serif;
+    color: black;
+}
+    ::deep .quickgrid[theme=corporate] .col-title {
+        gap: 0.4rem; /* Separate the sort indicator from title text */
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    ::deep .quickgrid[theme=corporate] .th {
+        border: 1px solid blue;
+        width: 20px;
+        word-wrap: break-word;
+    }
+
+    ::deep .quickgrid[theme=corporate] .td {
+        border: 1px solid blue;
+        width: 20px;
+        word-wrap: break-word;
+    }
+
+    ::deep .quickgrid[theme=corporate] .sort-indicator {
+        color: blue;
+    }
+
+    ::deep .quickgrid[theme=corporate] button.col-title:hover, ::deep .quickgrid[theme=corporate] .col-options-button:hover {
+        background-color: cornflowerblue;
+    }
+
+    ::deep .quickgrid[theme=corporate] button.col-title:active, ::deep .quickgrid[theme=corporate] .col-options-button:active {
+        background-color: deepskyblue;
+    }

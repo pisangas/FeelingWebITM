@@ -1,37 +1,40 @@
 ﻿@page "/tweets"
 @inject IRepository repository
 
+<div class="m-4">
+    <h3>Listado de Tweets</h3>
+    <input type="search" autofocus @bind="nameSearch" @bind:after="FilterText" placeholder="Filter Post" />
+</div>
 
-<h3>Listado de Tweets</h3>
-
-<QuickGrid Items="@tweets" @ref="grid" Pagination="pagination">
-    <PropertyColumn Property="@(p => p.IsActive)" Sortable="true" Title="Estado" Align="Align.Center">
-        <ColumnOptions>
-            <label>
-                <input type="checkbox" @bind="soloActivos" @bind:after="Filtrar" /> Activos
-
-
-
-            </label>
-        </ColumnOptions>
-    </PropertyColumn>
-
-    <PropertyColumn Property="@(p => p.Weekday)" Sortable="true" Title="Dia" Align="Align.Center" />
-    <PropertyColumn Property="@(p => p.Language)" Sortable="true" Title="Idioma" Align="Align.Center" />
-    <PropertyColumn Property="@(p => p.Likes)" Sortable="true" Title="Reacciones" Align="Align.Center" />
-    <PropertyColumn Property="@(p => p.Content)" Sortable="true" Title="Post" Align="Align.Center" />
-    <PropertyColumn Property="@(p => p.UserId)" Sortable="true" Title="Id del Usuario" Align="Align.Center" />
-    <PropertyColumn Property="@(p => p.TweetId)" Sortable="true" Title="Id del Tweet" Align="Align.Center" />
-</QuickGrid>
-
-<Paginator Value="@pagination" />
+<div >
+    <QuickGrid Items="@tweets" @ref="grid" Pagination="pagination" Theme="corporate">
+        <PropertyColumn Property="@(p => p.IsActive)" Sortable="true" Title="Estado" Align="Align.Center">
+            <ColumnOptions>
+                <label>
+                    <input type="checkbox" @bind="soloActivos" @bind:after="Filtrar" /> Activos
+                </label>
+            </ColumnOptions>
+        </PropertyColumn>
+        <PropertyColumn Property="@(p => p.Weekday)" Sortable="true" Title="Dia"/>
+        <PropertyColumn Property="@(p => p.Language)" Sortable="true" Title="Idioma" />
+        <PropertyColumn Property="@(p => p.Likes)" Sortable="true" Title="Reacciones" />
+        <PropertyColumn Property="@(p => p.Content)" Sortable="true" Title="Post" />
+        <TemplateColumn Title="Acciones">
+            <button class="btn btn-danger" @onclick="@(() => DeleteAsync(tweet))">Borrar</button>
+        </TemplateColumn>
+        
+    </QuickGrid>
+    <Paginator Value="@pagination" />
+</div>
 
 @code {
+    public Tweet tweet { get; set; } = null!;
     public IQueryable<Tweet> tweets { get; set; } = null!;
     public IQueryable<Tweet> response { get; set; } = null!;
     QuickGrid<Tweet>? grid;
     bool soloActivos = false;
-    PaginationState pagination = new PaginationState { ItemsPerPage = 10 };
+    string nameSearch = string.Empty;
+    PaginationState pagination = new PaginationState { ItemsPerPage = 5 };
 
     protected async override Task OnInitializedAsync()
     {
@@ -39,6 +42,18 @@
         response = httpResponse.Response!.AsQueryable();
         tweets = response;
     }
+
+    public async Task DeleteAsync(Tweet tweet)
+    {
+        await grid!.RefreshDataAsync();        
+    }
+
+    public async Task FilterText()
+    {
+        tweets = response.Where(p => p.Content.Contains(nameSearch));
+        await grid!.RefreshDataAsync();
+    }
+
 
     public async Task Filtrar()
     {
