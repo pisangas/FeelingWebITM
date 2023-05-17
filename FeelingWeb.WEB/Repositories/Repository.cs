@@ -22,7 +22,16 @@ namespace FeelingWeb.WEB.Repositories
                 return new HttpResponseWrapper<T>(response, false, responseHttp);
             }
 
-
+            return new HttpResponseWrapper<T>(default, true, responseHttp);
+        }
+        public async Task<HttpResponseWrapper<T>> GetAllUsersAsync<T>(string url)
+        {
+            var responseHttp = await _httpClient.GetAsync(url);
+            if (responseHttp.IsSuccessStatusCode)
+            {
+                var response = await UnserializeAnswer<T>(responseHttp, _jsonDefaultOptions);
+                return new HttpResponseWrapper<T>(response, false, responseHttp);
+            }
 
             return new HttpResponseWrapper<T>(default, true, responseHttp);
         }
@@ -31,6 +40,6 @@ namespace FeelingWeb.WEB.Repositories
         {
             var respuestaString = await httpResponse.Content.ReadAsStringAsync();
             return JsonSerializer.Deserialize<T>(respuestaString, jsonSerializerOptions)!;
-        }
+        }        
     }
 }

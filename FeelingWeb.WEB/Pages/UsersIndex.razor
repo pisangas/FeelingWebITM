@@ -1,0 +1,62 @@
+﻿@page "/users"
+@inject IRepository repository
+
+<div class="m-4">
+    <h3>Listado de Usuarios</h3>  
+</div>
+
+<div>
+    <QuickGrid Items="@users" @ref="grid" Pagination="pagination" Theme="corporate">
+        <PropertyColumn Property="@(p => p.Document)" Sortable="true" Title="Identificación #" Align="Align.Center">
+            <ColumnOptions>
+                <label>
+                    <input type="search" @bind="documentSearch" @bind:after="FilterDocument" placeholder="Identificación..." />
+                </label>
+            </ColumnOptions>
+        </PropertyColumn> 
+        <PropertyColumn Property="@(p => p.UserName)" Sortable="true" Title="Usuario">
+            <ColumnOptions>
+                <label>
+                    <input type="search" @bind="nameSearch" @bind:after="FilterUsername" placeholder="Usuario..." />
+                </label>
+            </ColumnOptions>
+        </PropertyColumn>
+        <PropertyColumn Property="@(p => p.FirstName)" Sortable="true" Title="Nombre" />
+        <PropertyColumn Property="@(p => p.LastName)" Sortable="true" Title="Apellido" />
+        <PropertyColumn Property="@(p => p.UserType)" Sortable="true" Title="Tipo de Usuario" />
+       @* <TemplateColumn Title="Acciones">
+            <button class="btn btn-danger" @onclick="@(() => DeleteAsync(tweet))">Borrar</button>
+        </TemplateColumn>*@
+    </QuickGrid>
+    <Paginator Value="@pagination"/>
+</div>
+
+@code {
+    bool soloActivos = false;
+    string nameSearch = string.Empty;
+    string documentSearch = string.Empty;
+    QuickGrid<User>? grid;
+    PaginationState pagination = new PaginationState { ItemsPerPage = 5 };
+    public IQueryable<User> users { get; set; } = null!;
+    public IQueryable<User> response { get; set; } = null!;
+
+    protected async override Task OnInitializedAsync()
+    {
+        var httpResponse = await repository.GetAllUsersAsync<List<User>>("api/users");
+        response = httpResponse.Response!.AsQueryable();
+        users = response;
+    }
+
+    public async Task FilterUsername()
+    {
+        users = response.Where(p => p.UserName!.Contains(nameSearch));
+        await grid!.RefreshDataAsync();
+    }
+    public async Task FilterDocument()
+    {
+        users = response.Where(p => p.Document.Contains(documentSearch));
+        await grid!.RefreshDataAsync();
+    }
+
+    
+}

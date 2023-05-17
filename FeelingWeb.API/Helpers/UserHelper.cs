@@ -39,6 +39,11 @@ namespace FeelingWeb.API.Helpers
             }
         }
 
+        public async Task<List<User>> GeatAllUserAsync()
+        {
+            return await _context.Users.ToListAsync();
+        }
+
         public async Task<User> GetUserAsync(string email)
         {
             return await _context.Users.FirstOrDefaultAsync(x => x.Email == email);

@@ -11,7 +11,7 @@
         <PropertyColumn Property="@(p => p.IsActive)" Sortable="true" Title="Estado" Align="Align.Center">
             <ColumnOptions>
                 <label>
-                    <input type="checkbox" @bind="soloActivos" @bind:after="Filtrar" /> Activos
+                    <input type="checkbox" @bind="soloActivos" @bind:after="FilterActives" /> Activos
                 </label>
             </ColumnOptions>
         </PropertyColumn>
@@ -55,7 +55,7 @@
     }
 
 
-    public async Task Filtrar()
+    public async Task FilterActives()
     {
         if (soloActivos)
         {
