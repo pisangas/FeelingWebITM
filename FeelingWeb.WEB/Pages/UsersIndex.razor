@@ -1,5 +1,6 @@
 ﻿@page "/users"
 @inject IRepository repository
+@attribute [Authorize(Roles = "Admin")]
 
 <div class="m-4">
     <h3>Listado de Usuarios</h3>  

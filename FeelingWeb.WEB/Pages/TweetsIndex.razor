@@ -1,5 +1,6 @@
 ﻿@page "/tweets"
 @inject IRepository repository
+@attribute [Authorize(Roles = "Admin")]
 
 <div class="m-4">
     <h3>Listado de Tweets</h3>
