@@ -1,6 +1,7 @@
 ﻿@page "/users"
 @inject IRepository repository
 @attribute [Authorize(Roles = "Admin")]
+@inject SweetAlertService sweetAlertService
 
 <div class="m-4">
     <h3>Listado de Usuarios</h3>  
@@ -43,9 +44,18 @@
 
     protected async override Task OnInitializedAsync()
     {
-        var httpResponse = await repository.GetAllUsersAsync<List<User>>("api/users");
-        response = httpResponse.Response!.AsQueryable();
-        users = response;
+        try
+        {
+            var httpResponse = await repository.GetAllUsersAsync<List<User>>("api/users");
+            response = httpResponse.Response!.AsQueryable();
+            users = response;
+        }
+        catch (Exception ex)
+        {
+
+            await sweetAlertService.FireAsync("Error", ex.Message, SweetAlertIcon.Error);
+        }
+        
     }
 
     public async Task FilterUsername()

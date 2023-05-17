@@ -1,4 +1,5 @@
-﻿using FeelingWeb.Shared.Entities;
+﻿using FeelingWeb.Shared.DTOs;
+using FeelingWeb.Shared.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace FeelingWeb.API.Helpers
@@ -14,5 +15,9 @@ namespace FeelingWeb.API.Helpers
         Task AddUserToRoleAsync(User user, string roleName);
 
         Task<bool> IsUserInRoleAsync(User user, string roleName);
+        Task<SignInResult> LoginAsync(LoginDTO model);
+
+        Task LogoutAsync();
+
     }
 }

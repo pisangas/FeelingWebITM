@@ -1,6 +1,7 @@
 ﻿@page "/tweets"
 @inject IRepository repository
 @attribute [Authorize(Roles = "Admin")]
+@inject SweetAlertService sweetAlertService
 
 <div class="m-4">
     <h3>Listado de Tweets</h3>
@@ -39,9 +40,17 @@
 
     protected async override Task OnInitializedAsync()
     {
-        var httpResponse = await repository.GetAllAsync<List<Tweet>>("api/Tweets");
-        response = httpResponse.Response!.AsQueryable();
-        tweets = response;
+        try
+        {
+            var httpResponse = await repository.GetAllAsync<List<Tweet>>("api/Tweets");
+            response = httpResponse.Response!.AsQueryable();
+            tweets = response;
+        }
+        catch (Exception ex)
+        {
+            await sweetAlertService.FireAsync("Error", ex.Message, SweetAlertIcon.Error);
+        }
+        
     }
 
     public async Task DeleteAsync(Tweet tweet)

@@ -1,3 +1,4 @@
+using CurrieTechnologies.Razor.SweetAlert2;
 using FeelingWeb.WEB;
 using FeelingWeb.WEB.Auth;
 using FeelingWeb.WEB.Repositories;
@@ -11,6 +12,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7137/") });
 builder.Services.AddScoped<IRepository,Repository>();
+builder.Services.AddSweetAlert2();
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, AuthenticationProviderTest>();
 
