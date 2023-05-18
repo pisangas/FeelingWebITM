@@ -9,7 +9,7 @@
 </div>
 
 <div >
-    <QuickGrid Items="@tweets" @ref="grid" Pagination="pagination" Theme="corporate">
+    <QuickGrid Items="@tweets" @ref="grid" Pagination="pagination">
         <PropertyColumn Property="@(p => p.IsActive)" Sortable="true" Title="Estado" Align="Align.Center">
             <ColumnOptions>
                 <label>
