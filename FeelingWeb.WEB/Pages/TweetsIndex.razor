@@ -7,8 +7,11 @@
     <h3>Listado de Tweets</h3>
     <input type="search" autofocus @bind="nameSearch" @bind:after="FilterText" placeholder="Filter Post" />
 </div>
+<head>
+    <link href="css/formulario.css" rel="stylesheet" />
+</head>
 
-<div >
+<div class="formulario">
     <QuickGrid Items="@tweets" @ref="grid" Pagination="pagination">
         <PropertyColumn Property="@(p => p.IsActive)" Sortable="true" Title="Estado" Align="Align.Center">
             <ColumnOptions>
@@ -23,8 +26,7 @@
         <PropertyColumn Property="@(p => p.Content)" Sortable="true" Title="Post" />
         <TemplateColumn Title="Acciones">
             <button class="btn btn-danger" @onclick="@(() => DeleteAsync(tweet))">Borrar</button>
-        </TemplateColumn>
-        
+        </TemplateColumn>        
     </QuickGrid>
     <Paginator Value="@pagination" />
 </div>
