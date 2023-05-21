@@ -53,14 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">            
-            <div class="mb-3">
-                <label>Foto:</label>
-                <div>
-                    <InputText class="form-control" @bind-Value="@userDTO.Photo" />
-                    <ValidationMessage For="@(() => userDTO.Photo)" />
-                </div>
-            </div>
+        <div class="col-6">
             <div class="mb-3">
                 <label>Contraseña:</label>
                 <div>
@@ -75,6 +68,9 @@
                     <ValidationMessage For="@(() => userDTO.PasswordConfirm)" />
                 </div>
             </div>
+            <div class="mb-3">
+                <InputPicture Label="Foto" ImageSelected="ImageSelected" ImageURL="@imageUrl" />
+            </div>
         </div>
     </div>
     <button class="btn btn-primary" type="submit">Registrar</button>
@@ -82,6 +78,22 @@
 
 @code {
     private UserDTO userDTO = new();
+    private string? imageUrl;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(userDTO.Photo))
+        {
+            imageUrl = userDTO.Photo;
+            userDTO.Photo = null;
+        }
+    }
+
+    private void ImageSelected(string imagenBase64)
+    {
+        userDTO.Photo = imagenBase64;
+        imageUrl = null;
+    }
 
     private async Task CreteUserAsync()
     {
