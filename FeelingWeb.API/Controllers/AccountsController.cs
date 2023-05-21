@@ -17,6 +17,8 @@ namespace FeelingWeb.API.Controllers
     {
         private readonly IUserHelper _userHelper;
         private readonly IConfiguration _configuration;
+        private readonly IFileStorage _fileStorage;
+        private readonly string _container;
         public AccountsController(IUserHelper userHelper, IConfiguration configuration)
         {
             _userHelper = userHelper;
