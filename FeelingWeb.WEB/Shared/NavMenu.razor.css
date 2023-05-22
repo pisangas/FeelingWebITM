@@ -2,6 +2,11 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+.logo {
+    width: 70px;
+    height: 50px;
+}
+
 .top-row {
     height: 3.5rem;
     background-color: rgba(0,0,0,0.4);
