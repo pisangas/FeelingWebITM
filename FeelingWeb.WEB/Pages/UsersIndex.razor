@@ -26,9 +26,10 @@
         <PropertyColumn Property="@(p => p.FirstName)" Sortable="true" Title="Nombre" />
         <PropertyColumn Property="@(p => p.LastName)" Sortable="true" Title="Apellido" />
         <PropertyColumn Property="@(p => p.UserType)" Sortable="true" Title="Tipo de Usuario" />
-       @* <TemplateColumn Title="Acciones">
-            <button class="btn btn-danger" @onclick="@(() => DeleteAsync(tweet))">Borrar</button>
-        </TemplateColumn>*@
+       <TemplateColumn Title="Acciones">
+            <button class="btn btn-danger" @onclick="@(() => DeleteAsync())">Borrar</button>
+            <iconify-icon icon="iwwa:delete"></iconify-icon>
+        </TemplateColumn>
     </QuickGrid>
     <Paginator Value="@pagination"/>
 </div>
@@ -55,7 +56,7 @@
 
             await sweetAlertService.FireAsync("Error", ex.Message, SweetAlertIcon.Error);
         }
-        
+
     }
 
     public async Task FilterUsername()
@@ -69,5 +70,8 @@
         await grid!.RefreshDataAsync();
     }
 
-    
+    public async Task DeleteAsync()
+    {
+        await grid!.RefreshDataAsync();
+    }
 }
