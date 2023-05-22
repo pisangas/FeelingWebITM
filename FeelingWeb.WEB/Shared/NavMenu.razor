@@ -5,11 +5,11 @@
             <div class="icon-menu-arrow">
                 @if (!@IconMenuActive)
                 {
-                    <span class="oi oi-arrow-left" style="color: white;" @onclick="ToggleIconMenu"></span>
+                    <span class="oi oi-grid-two-up" style="color: white;" @onclick="ToggleIconMenu"></span>
                 }
                 else
                 {
-                    <span class="oi oi-arrow-right" style="color: white;" @onclick="ToggleIconMenu"></span>
+                    <span class="oi oi-menu" style="color: white;" @onclick="ToggleIconMenu"></span>
                 }
             </div>
         </div>
@@ -40,7 +40,7 @@
             <Authorized>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="tweets">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span>
+                        <img src="/icon-twitter.svg" class="twitter" alt="twitter">
                         @if (!@IconMenuActive)
                         {
                             <label>Tweets</label>
@@ -53,7 +53,7 @@
             <Authorized>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="users">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span>
+                        <span class="oi oi-person" aria-hidden="true"></span>
                         @if (!@IconMenuActive)
                         {
                             <label>Usuarios</label>
@@ -66,7 +66,7 @@
             <Authorized>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="sentiment">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span>
+                        <span class="oi oi-list" aria-hidden="true"></span>
                         @if (!@IconMenuActive)
                         {
                             <label>Sentimientos</label>
@@ -78,19 +78,6 @@
     </nav>
 </div>
 
-
-@*<div class="bottom-row">
-    <div class="icon-menu-arrow">
-        @if (!@IconMenuActive)
-        {
-            <span class="oi oi-arrow-left" style="color: white;" @onclick="ToggleIconMenu"></span>
-        }
-        else
-        {
-            <span class="oi oi-arrow-right" style="color: white;" @onclick="ToggleIconMenu"></span>
-        }
-    </div>
-</div>*@
 
 @code {
     //bool to send to MainLayout for shrinking sidebar and showing/hide menu text
