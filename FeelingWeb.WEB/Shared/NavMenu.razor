@@ -1,8 +1,24 @@
 ﻿
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <img src="/Iogo.png" class="logo" alt="logo">
-        <a class="navbar-brand" href="">FeelingWeb</a>
+        <div class="bottom-row">
+            <div class="icon-menu-arrow">
+                @if (!@IconMenuActive)
+                {
+                    <span class="oi oi-arrow-left" style="color: white;" @onclick="ToggleIconMenu"></span>
+                }
+                else
+                {
+                    <span class="oi oi-arrow-right" style="color: white;" @onclick="ToggleIconMenu"></span>
+                }
+            </div>
+        </div>
+        
+        @if (!@IconMenuActive)
+        {
+            <img src="/Iogo.png" class="logo" alt="logo">
+            <a class="navbar-brand" href="">FeelingWeb</a>
+        }
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,23 +29,35 @@
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
+                <span class="oi oi-home" aria-hidden="true"></span>
+                @if (!@IconMenuActive)
+                {
+                    <label>Home</label>
+                }
             </NavLink>
         </div>
-         <AuthorizeView Roles="Admin">
+        <AuthorizeView Roles="Admin">
             <Authorized>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="tweets">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span> Listado Tweets
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>
+                        @if (!@IconMenuActive)
+                        {
+                            <label>Tweets</label>
+                        }
                     </NavLink>
                 </div>
             </Authorized>
         </AuthorizeView>
-         <AuthorizeView Roles="Admin">
+        <AuthorizeView Roles="Admin">
             <Authorized>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="users">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span> Listado de Usuarios
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>
+                        @if (!@IconMenuActive)
+                        {
+                            <label>Usuarios</label>
+                        }
                     </NavLink>
                 </div>
             </Authorized>
@@ -38,7 +66,11 @@
             <Authorized>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="sentiment">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span> Sentimientos
+                        <span class="oi oi-list-rich" aria-hidden="true"></span>
+                        @if (!@IconMenuActive)
+                        {
+                            <label>Sentimientos</label>
+                        }
                     </NavLink>
                 </div>
             </Authorized>
@@ -46,7 +78,28 @@
     </nav>
 </div>
 
+
+@*<div class="bottom-row">
+    <div class="icon-menu-arrow">
+        @if (!@IconMenuActive)
+        {
+            <span class="oi oi-arrow-left" style="color: white;" @onclick="ToggleIconMenu"></span>
+        }
+        else
+        {
+            <span class="oi oi-arrow-right" style="color: white;" @onclick="ToggleIconMenu"></span>
+        }
+    </div>
+</div>*@
+
 @code {
+    //bool to send to MainLayout for shrinking sidebar and showing/hide menu text
+    private bool IconMenuActive { get; set; } = false;
+
+    //EventCallback for sending bool to MainLayout
+    [Parameter]
+    public EventCallback<bool> ShowIconMenu { get; set; }
+
     private bool collapseNavMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
@@ -54,5 +107,11 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+    //Method to toggle IconMenuActive bool and send bool via EventCallback
+    private async Task ToggleIconMenu()
+    {
+        IconMenuActive = !IconMenuActive;
+        await ShowIconMenu.InvokeAsync(IconMenuActive);
     }
 }
