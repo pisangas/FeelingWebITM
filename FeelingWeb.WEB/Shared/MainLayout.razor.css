@@ -9,16 +9,38 @@ main {
 }
 
 .sidebar {
-    background: linear-gradient(0deg, rgba(255,241,206,1) 35%, rgba(130,89,5,0.958420868347339) 100%);
+    background: linear-gradient(83deg, rgba(246,245,241,0.11248249299719892) 1%, rgba(158,120,25,0.8743872549019608) 37%, rgba(182,87,64,0.700717787114846) 81%);
 }
 
+.logo {
+    width: 70px;
+    height: 50px;
+    padding: 0px 20px 0px 5px;
+}
+.navbar-brand {
+    /*(arriba, derecha, abajo, izquierda)*/
+    padding: 10px 200px 15px 5px;
+    display: inline-flex;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
+    color: #85620a
+}
+
+
+
 .top-row {
-    background: linear-gradient(164deg, rgba(255,241,206,0.8743872549019608) 38%, rgba(130,89,5,0.700717787114846) 100%);
+    background: linear-gradient(83deg, rgba(246,245,241,0.11248249299719892) 1%, rgba(158,120,25,0.8743872549019608) 37%, rgba(182,87,64,0.700717787114846) 81%);
     border-bottom: 1px solid #d6d5d5;
     justify-content: flex-end;
     height: 3.5rem;
     display: flex;
     align-items: center;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
 
     .top-row ::deep a, .top-row ::deep .btn-link {

@@ -1,6 +1,6 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Feelingweb</PageTitle>
 <AuthorizeView Roles="Admin">
     <Authorized>
         <p>Estas autenticado y autorizado, @context.User.Identity?.Name</p>
@@ -11,9 +11,8 @@
 
 </AuthorizeView>
 
-
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div class="welcome" style="text-align:center">
+<h1>Hola, Bienvenido a FeelingWeb</h1>
+<p>Una pagina web dedicada a realizar analisis de sentimientos en textos</p>
+</div>
+<img src="/Imagen1.png" class="home-img" alt="home-img" style="width:90%; height:50%; align-items:center;position: absolute">
