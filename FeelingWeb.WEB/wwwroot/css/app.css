@@ -10,8 +10,8 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.welcome{
-    background-color:antiquewhite;
+.welcome {
+    background-color: #c09def;
 }
 
 h1:focus {
@@ -19,7 +19,7 @@ h1:focus {
 }
 
 a, .btn-link {
-    color: #0071c1;
+    color: #ffffff;
 }
 
 .btn-primary {

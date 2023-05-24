@@ -4,14 +4,19 @@
 @inject NavigationManager navigationManager
 @inject ILoginService loginService
 
-<h3>Iniciar Sesión</h3>
 
-<EditForm Model="loginDTO" OnValidSubmit="LoginAsync">
+
+
+<EditForm class="login" Model="loginDTO" OnValidSubmit="LoginAsync">
     <DataAnnotationsValidator />
 
     <div class="row">
-        <div class="col-4">
+        <head>
+            <link href="css/login.css" rel="stylesheet" />
+        </head>
+        <h3>Iniciar Sesión</h3>
             <div class="mb-3">
+                <span class="oi oi-envelope-closed" aria-hidden="true"></span>
                 <label>Email:</label>
                 <div>
                     <InputText class="form-control" @bind-Value="@loginDTO.Email" />
@@ -19,6 +24,7 @@
                 </div>
             </div>
             <div class="mb-3">
+                <span class="oi oi-lock-locked" aria-hidden="true"></span>
                 <label>Contraseña:</label>
                 <div>
                     <InputText type="password" class="form-control" @bind-Value="@loginDTO.Password" />
@@ -26,7 +32,6 @@
                 </div>
             </div>
             <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
-        </div>
     </div>
 </EditForm>
 

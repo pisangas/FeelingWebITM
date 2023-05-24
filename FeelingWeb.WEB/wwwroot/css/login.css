@@ -1,0 +1,84 @@
+﻿/* Colors */
+:root {
+    --redFire: rgb(226, 217, 237);
+}
+
+/* Fonts */
+@import "bourbon";
+
+body {
+    background-color: var(--redFire);
+    font-family: 'Asap', sans-serif;
+}
+h3{
+    text-align:center
+}
+
+.login {
+    overflow: hidden;
+    background-color: white;
+    padding: 40px 30px 30px 30px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    transform: translate(-50%, -50%);
+    transition: transform 300ms, box-shadow 300ms;
+    box-shadow: 5px 10px 10px rgba(var(--greenSeaweed), 0.2);
+}
+.login::before,
+.login::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 45%;
+    border-bottom-left-radius: 35%;
+    border-bottom-right-radius: 40%;
+    z-index: -1;
+}
+
+.login::before {
+    left: 40%;
+    bottom: -130%;
+}
+.login::after {
+    left: 35%;
+    bottom: -125%;
+}
+
+.login .form-control {
+    font-family: 'Asap', sans-serif;
+    display: block;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+    width: 100%;
+    border: 0;
+    padding: 10px 10px;
+    margin: 15px -10px;
+}
+
+    .login button {
+        font-family: 'Asap', sans-serif;
+        cursor: pointer;
+        color: #fff;
+        font-size: 16px;
+        text-transform: uppercase;
+        width: 200px;
+        border: 0;
+        padding: 10px 0;
+        margin-top: 10px;
+        margin-left: -5px;
+        border-radius: 5px;
+        background-color: var(--redFire);
+        transition: background-color 300ms;
+        margin-inline: auto;
+    }
+
+    .login button:hover {
+        background-color: rgba(234, 68, 78, 0.95);
+    }
+
