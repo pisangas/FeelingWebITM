@@ -4,13 +4,19 @@
 @inject NavigationManager navigationManager
 @inject ILoginService loginService
 
-<h3>Registrar Nuevo Usuario</h3>
 
-<EditForm Model="userDTO" OnValidSubmit="CreteUserAsync">
+<EditForm class="register" Model="userDTO" OnValidSubmit="CreteUserAsync">
     <DataAnnotationsValidator />
+
     <div class="row">
+        <head>
+            <link href="css/register.css" rel="stylesheet" />
+        </head>
+        <h3>Registrar Nuevo Usuario</h3>
+
         <div class="col-6">
             <div class="mb-3">
+                <span class="oi oi-person" aria-hidden="true"></span>
                 <label>Nombres:</label>
                 <div>
                     <InputText class="form-control" @bind-Value="@userDTO.FirstName" />
@@ -18,6 +24,7 @@
                 </div>
             </div>
             <div class="mb-3">
+                <span class="oi oi-person" aria-hidden="true"></span>
                 <label>Apellidos:</label>
                 <div>
                     <InputText class="form-control" @bind-Value="@userDTO.LastName" />
@@ -25,6 +32,7 @@
                 </div>
             </div>
             <div class="mb-3">
+                <span class="oi oi-person" aria-hidden="true"></span>
                 <label>Documento:</label>
                 <div>
                     <InputText class="form-control" @bind-Value="@userDTO.Document" />
@@ -32,6 +40,7 @@
                 </div>
             </div>
             <div class="mb-3">
+                <span class="oi oi-phone" aria-hidden="true"></span>
                 <label>Teléfono:</label>
                 <div>
                     <InputText class="form-control" @bind-Value="@userDTO.PhoneNumber" />
@@ -39,6 +48,7 @@
                 </div>
             </div>
             <div class="mb-3">
+                <span class="oi oi-map-marker" aria-hidden="true"></span>
                 <label>Dirección:</label>
                 <div>
                     <InputText class="form-control" @bind-Value="@userDTO.Address" />
@@ -46,6 +56,7 @@
                 </div>
             </div>
             <div class="mb-3">
+                <span class="oi oi-envelope-closed" aria-hidden="true"></span>
                 <label>Email:</label>
                 <div>
                     <InputText class="form-control" @bind-Value="@userDTO.Email" />
@@ -55,6 +66,7 @@
         </div>
         <div class="col-6">
             <div class="mb-3">
+                <span class="oi oi-lock-locked" aria-hidden="true"></span>
                 <label>Contraseña:</label>
                 <div>
                     <InputText type="password" class="form-control" @bind-Value="@userDTO.Password" />
@@ -62,6 +74,7 @@
                 </div>
             </div>
             <div class="mb-3">
+                <span class="oi oi-lock-locked" aria-hidden="true"></span>
                 <label>Confirmación de contraseña:</label>
                 <div>
                     <InputText type="password" class="form-control" @bind-Value="@userDTO.PasswordConfirm" />
@@ -69,11 +82,14 @@
                 </div>
             </div>
             <div class="mb-3">
+                <span class="oi oi-camera-slr" aria-hidden="true"></span>
                 <InputPicture Label="Foto" ImageSelected="ImageSelected" ImageURL="@imageUrl" />
             </div>
         </div>
     </div>
+    <div class="center-button">
     <button class="btn btn-primary" type="submit">Registrar</button>
+    </div>
 </EditForm>
 
 @code {

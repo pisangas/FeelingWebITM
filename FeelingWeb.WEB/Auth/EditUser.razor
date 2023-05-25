@@ -10,17 +10,20 @@
 }
 else
 {
-    <EditForm Model="user" OnValidSubmit="SaveUserAsync">
+    <EditForm class="EditUser" Model="user" OnValidSubmit="SaveUserAsync">
         <DataAnnotationsValidator />
         <div class="card">
+            <head>
+                <link href="css/EditUser.css" rel="stylesheet" />
+            </head>
             <div class="card-header">
                 <span>
-                    <i class="oi oi-person" /> Editar Usuario
+                    <span class="oi oi-person"> Editar Usuario</span>
                     <a class="btn btn-sm btn-secondary float-end" href="/changePassword"><i class="oi oi-key" /> Cambiar Contraseña</a>
-                    <button class="btn btn-sm btn-primary float-end mx-2" type="submit"><i class="oi oi-check" /> Guardar Cambios</button>
+                    <button class="btn btn-sm btn-primary float-end mx-2" id="guardar "type="submit"><i class="oi oi-check" /> Guardar Cambios</button>
                 </span>
             </div>
-            <div class="card-body">
+            
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
@@ -65,7 +68,7 @@ else
                         </div>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </EditForm>
 }

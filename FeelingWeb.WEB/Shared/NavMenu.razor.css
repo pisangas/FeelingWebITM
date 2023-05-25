@@ -70,8 +70,19 @@
     width: 2rem;
     font-size: 1.1rem;
     vertical-align: text-top;
+    margin-right: 10px;
+    margin-left: -10px;
     top: -2px;
-    padding:initial
+    padding: initial;
+}
+
+.smile {
+    filter: invert(100%);
+    vertical-align: text-top;
+    margin-right: 10px;
+    margin-left: -5px;
+    top: -2px;
+    padding: initial;
 }
 
 @media (min-width: 641px) {
