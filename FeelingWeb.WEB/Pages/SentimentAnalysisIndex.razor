@@ -1,19 +1,50 @@
 ﻿@page "/sentiment"
 
-<h3>SentimentAnalysisIndex</h3>
-<head>
-    <link href="css/formulario.css" rel="stylesheet" />
-</head>
 
-<div class="formulario">
-    <div class="campo">
-        <label for="nombre">Texto Analizar:</label>        
-    </div>
-    <div class="campo">
-        <input type="text" id="nombre" class="campo-input" />
-    </div>   
 
-    <div class="campo">
-        <button class="boton">Enviar</button>
+
+<EditForm class="formsentiment" Model="@formData" OnValidSubmit="HandleSubmit">
+
+    <head>
+        <link href="css/formulario.css" rel="stylesheet" />
+    </head>
+
+    <h3>SentimentAnalysis Index</h3>
+    <div class="form-group">
+        <label for="textInput">Texto:</label>
+        <InputTextArea id="textInput" class="form-control" @bind-Value="@formData.Text" />
     </div>
-</div>
+    <div class="form-group">
+        <label for="fileInput">Archivo:</label>
+        <InputFile id="fileInput" class="form-control-file" OnChange="HandleFileSelected" />
+    </div>
+    <button type="submit" class="btn btn-primary">Analizar</button>
+</EditForm>
+
+@code {
+    private FormData formData = new FormData();
+    private IBrowserFile file;
+
+    public class FormData
+    {
+        public string Text { get; set; }
+    }
+
+    private void HandleSubmit()
+    {
+        // Lógica para manejar el envío del formulario
+        Console.WriteLine("Texto: " + formData.Text);
+        if (file != null)
+        {
+            // Lógica para manejar el archivo subido
+            var fileStream = file.OpenReadStream();
+            // Aquí puedes procesar el archivo, guardarlo en el servidor, etc.
+            Console.WriteLine("Nombre de archivo: " + file.Name);
+        }
+    }
+
+    private void HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        file = e.File;
+    }
+}
