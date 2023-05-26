@@ -15,23 +15,27 @@
             <link href="css/login.css" rel="stylesheet" />
         </head>
         <h3>Iniciar Sesión</h3>
-            <div class="mb-3">
-                <span class="oi oi-envelope-closed" aria-hidden="true"></span>
-                <label>Email:</label>
-                <div>
-                    <InputText class="form-control" @bind-Value="@loginDTO.Email" />
-                    <ValidationMessage For="@(() => loginDTO.Email)" />
-                </div>
+        <div class="mb-3">
+            <span class="oi oi-envelope-closed" aria-hidden="true"></span>
+            <label>Email:</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@loginDTO.Email" />
+                <ValidationMessage For="@(() => loginDTO.Email)" />
             </div>
-            <div class="mb-3">
-                <span class="oi oi-lock-locked" aria-hidden="true"></span>
-                <label>Contraseña:</label>
-                <div>
-                    <InputText type="password" class="form-control" @bind-Value="@loginDTO.Password" />
-                    <ValidationMessage For="@(() => loginDTO.Password)" />
-                </div>
+        </div>
+        <div class="mb-3">
+            <span class="oi oi-lock-locked" aria-hidden="true"></span>
+            <label>Contraseña:</label>
+            <div>
+                <InputText type="password" class="form-control" @bind-Value="@loginDTO.Password" />
+                <ValidationMessage For="@(() => loginDTO.Password)" />
             </div>
-            <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
+        </div>
+        <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
+        <div class="card-footer">
+            <a class="bbtn btn-link" href="/ResendToken">Reenviar correro de activación de cuenta</a>
+        </div>
+
     </div>
 </EditForm>
 
