@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Sales.API.Helpers;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,14 +51,21 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("name=LocalConnection"));
 builder.Services.AddTransient<SeedDb>();
 builder.Services.AddScoped<IUserHelper, UserHelper>();
+builder.Services.AddScoped<IMailHelper, MailHelper>();
 builder.Services.AddIdentity<User, IdentityRole>(x =>
 {
+    x.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
+    x.SignIn.RequireConfirmedEmail = true;
     x.User.RequireUniqueEmail = true;
     x.Password.RequireDigit = false;
     x.Password.RequiredUniqueChars = 0;
     x.Password.RequireLowercase = false;
     x.Password.RequireNonAlphanumeric = false;
     x.Password.RequireUppercase = false;
+    x.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);//TODO changed to 5min
+    x.Lockout.MaxFailedAccessAttempts = 3;
+    x.Lockout.AllowedForNewUsers = true;
+
 })
     .AddEntityFrameworkStores<DataContext>()
     .AddDefaultTokenProviders();
