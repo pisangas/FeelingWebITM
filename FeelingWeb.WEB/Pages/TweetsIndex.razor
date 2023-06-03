@@ -10,12 +10,12 @@
 
 <head>
     <link href="css/formulario.css" rel="stylesheet" />
-    <link href="/css/tweetsTable.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Proxima-Nova&display=swap" rel="stylesheet">
+    <link href="css/usersTable.css" rel="stylesheet" />
+    @*<link href="https://fonts.googleapis.com/css?family=Proxima-Nova&display=swap" rel="stylesheet">*@
 </head> 
 
 <div class="formulario">
-    <QuickGrid Items="@tweets" @ref="grid" Pagination="pagination" Class="tweetsTable" Theme="corporate">
+    <QuickGrid Items="@tweets" @ref="grid" Pagination="pagination" Theme="corporate">
         <PropertyColumn Property="@(p => p.IsActive)" Sortable="true" Title="Estado" Align="Align.Center">
             <ColumnOptions>
                 <label>
