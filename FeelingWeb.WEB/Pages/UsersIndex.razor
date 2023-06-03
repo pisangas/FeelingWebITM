@@ -4,18 +4,23 @@
 @inject SweetAlertService sweetAlertService
 
 <div class="m-4">
-    <h3>Listado de Usuarios</h3>  
+    <h3>Listado de Usuarios</h3>
 </div>
 
-<div>
+<head>
+    <link href="css/formulario.css" rel="stylesheet" />
+    <link href="css/usersTable.css" rel="stylesheet" />
+</head>
+
+<div class="formulario">
     <QuickGrid Items="@users" @ref="grid" Pagination="pagination" Theme="corporate">
-        <PropertyColumn Property="@(p => p.Document)" Sortable="true" Title="Identificación #" Align="Align.Center">
+        <PropertyColumn Property="@(p => p.Document)" Sortable="true" Title="Identificación" Align="Align.Center">
             <ColumnOptions>
                 <label>
                     <input type="search" @bind="documentSearch" @bind:after="FilterDocument" placeholder="Identificación..." />
                 </label>
             </ColumnOptions>
-        </PropertyColumn> 
+        </PropertyColumn>
         <PropertyColumn Property="@(p => p.UserName)" Sortable="true" Title="Usuario">
             <ColumnOptions>
                 <label>
@@ -23,15 +28,15 @@
                 </label>
             </ColumnOptions>
         </PropertyColumn>
-        <PropertyColumn Property="@(p => p.FirstName)" Sortable="true" Title="Nombre" />
-        <PropertyColumn Property="@(p => p.LastName)" Sortable="true" Title="Apellido" />
-        <PropertyColumn Property="@(p => p.UserType)" Sortable="true" Title="Tipo de Usuario" />
-       <TemplateColumn Title="Acciones">
+        <PropertyColumn Property="@(p => p.FirstName)" Align="Align.Center" Sortable="true" Title="Nombre" />
+        <PropertyColumn Property="@(p => p.LastName)" Align="Align.Center" Sortable="true" Title="Apellido" />
+        <PropertyColumn Property="@(p => p.UserType)" Align="Align.Center" Sortable="true" Title="Tipo de Usuario" />
+        <TemplateColumn Title="Acciones">
             <button class="btn btn-danger" @onclick="@(() => DeleteAsync())">Borrar</button>
             <iconify-icon icon="iwwa:delete"></iconify-icon>
         </TemplateColumn>
     </QuickGrid>
-    <Paginator Value="@pagination"/>
+    <Paginator Value="@pagination" />
 </div>
 
 @code {
@@ -56,7 +61,6 @@
 
             await sweetAlertService.FireAsync("Error", ex.Message, SweetAlertIcon.Error);
         }
-
     }
 
     public async Task FilterUsername()
@@ -64,6 +68,7 @@
         users = response.Where(p => p.UserName!.Contains(nameSearch));
         await grid!.RefreshDataAsync();
     }
+
     public async Task FilterDocument()
     {
         users = response.Where(p => p.Document.Contains(documentSearch));

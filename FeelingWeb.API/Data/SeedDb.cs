@@ -20,6 +20,7 @@ namespace FeelingWeb.API.Data
             await _context.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
             await CheckUserAsync("54021040", "Eduardo", "Gil", "pisangas@gmail.com", "3017390150", "Avenida Siempreviva 742", UserType.Admin);
+            await CheckUserAsync("10005632456", "Alecsa", "Piedrahita", "alecsa2009@hotmail.com", "3018563245", "Cra 45 # 52 - 56", UserType.Admin);
             await CheckUserAsync("54127889", "Jhon", "Doe", "JhonDoe@gmail.com", "320314569", "Avenida Siempreviva 742", UserType.User);
         }
 

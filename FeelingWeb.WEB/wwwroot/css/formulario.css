@@ -1,9 +1,9 @@
-﻿/* Colors */
+﻿ Colors 
 :root {
     --redFire: rgb(226, 217, 237);
 }
 
-/* Fonts */
+ Fonts 
 @import "bourbon";
 
 body {

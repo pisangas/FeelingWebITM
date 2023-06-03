@@ -7,14 +7,15 @@
     <h3>Listado de Tweets</h3>
     <input type="search" autofocus @bind="nameSearch" @bind:after="FilterText" placeholder="Filter Post" />
 </div>
+
 <head>
     <link href="css/formulario.css" rel="stylesheet" />
-    <link href="css/tweetsTable.css" rel="stylesheet" />
-
-</head>
+    <link href="/css/tweetsTable.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Proxima-Nova&display=swap" rel="stylesheet">
+</head> 
 
 <div class="formulario">
-    <QuickGrid Items="@tweets" @ref="grid" Pagination="pagination" Class="tweetsTable">
+    <QuickGrid Items="@tweets" @ref="grid" Pagination="pagination" Class="tweetsTable" Theme="corporate">
         <PropertyColumn Property="@(p => p.IsActive)" Sortable="true" Title="Estado" Align="Align.Center">
             <ColumnOptions>
                 <label>
@@ -22,11 +23,11 @@
                 </label>
             </ColumnOptions>
         </PropertyColumn>
-        <PropertyColumn Property="@(p => p.Weekday)" Sortable="true" Title="Dia"/>
-        <PropertyColumn Property="@(p => p.Language)" Sortable="true" Title="Idioma" />
-        <PropertyColumn Property="@(p => p.Likes)" Sortable="true" Title="Reacciones" />
-        <PropertyColumn Property="@(p => p.Content)" Sortable="true" Title="Post" />
-        <TemplateColumn Title="Acciones">
+        <PropertyColumn Property="@(p => p.Weekday)" Align="Align.Center" Sortable="true" Title="Dia"/>
+        <PropertyColumn Property="@(p => p.Language)" Align="Align.Center" Sortable="true" Title="Idioma" />
+        <PropertyColumn Property="@(p => p.Likes)" Align="Align.Center" Sortable="true" Title="Reacciones" />
+        <PropertyColumn Property="@(p => p.Content)" Align="Align.Center" Sortable="true" Title="Post" Class="post-column" />
+        <TemplateColumn Align="Align.Center" Title="Acciones">
             <button class="btn btn-danger" @onclick="@(() => DeleteAsync(tweet))">Borrar</button>
         </TemplateColumn>        
     </QuickGrid>

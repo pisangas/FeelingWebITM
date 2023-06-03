@@ -1,0 +1,51 @@
+﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+.m-4 {
+    color: #C09DEF;
+}
+
+h3 {
+    color: #92278F;
+}
+
+.formulario {
+    padding: 10px;
+}
+
+    .formulario input[type="search"] {
+        background-color: #C09DEF;
+        color: white;
+        border: none;
+        padding: 5px;
+    }
+
+    .formulario .btn-danger {
+        background-color: #92278F;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        margin-right: 5px;
+    }
+
+        .formulario .btn-danger:hover {
+            background-color: #C09DEF;
+            cursor: pointer;
+        }
+
+    .formulario th {
+        background-color: #8EC2FE;
+        font-weight: bolder;
+        text-align: center;
+        font-size: 18px;
+    }
+
+.formulario {
+    width: 100%;
+    table-layout: fixed;
+}
+
+    .formulario th,
+    .formulario td {
+        width: calc(100% / 6);
+        padding: 10px;
+    }

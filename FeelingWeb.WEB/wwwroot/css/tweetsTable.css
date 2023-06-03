@@ -1,34 +1,136 @@
-﻿/* Estilo para la tabla con clase tweetsTable */
-.tweetsTable table {
+﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+/*.formulario {
+    background-color: #C09DEF;
+    padding: 20px;
+    margin: 20px;
+}
+
+    .formulario h3 {
+        color: #92278F;
+    }
+
+    .formulario input[type="search"] {
+        background-color: #8EC2FE;
+        color: #FFFFFF;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+        margin-bottom: 10px;
+    }
+
+    .formulario .tweetsTable {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+        .formulario .tweetsTable th,
+        .formulario .tweetsTable td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        .formulario .tweetsTable th {
+            background-color: #92278F;
+            color: #FFFFFF;
+        }
+
+        .formulario .tweetsTable tr:nth-child(even) {
+            background-color: #C09DEF;
+        }
+
+        .formulario .tweetsTable tr:nth-child(odd) {
+            background-color: #8EC2FE;
+        }
+
+        .formulario .tweetsTable td button {
+            background-color: #92278F;
+            color: #FFFFFF;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+            .formulario .tweetsTable td button:hover {
+                background-color: #8EC2FE;
+            }
+*/
+
+.m-4 {
+    color: #C09DEF;
+    font-family: 'Proxima Nova', sans-serif;
+}
+
+h3 {
+    color: #92278F;
+}
+
+.formulario {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.tweetsTable {
     width: 100%;
     border-collapse: collapse;
 }
 
-/* Padding y alineación para las celdas */
-.tweetsTable td, .tweetsTable th {
+    .tweetsTable th {
+        background-color: #8EC2FE;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .tweetsTable td {
+        padding: 10px;
+    }
+
+    .tweetsTable .btn {
+        background-color: #92278F;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+    }
+
+        .tweetsTable .btn:hover {
+            background-color: #C09DEF;
+        }
+
+    .tweetsTable .btn-danger {
+        background-color: red;
+    }
+
+        .tweetsTable .btn-danger:hover {
+            background-color: darkred;
+        }
+
+    .tweetsTable input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+.formulario th,
+.formulario td {
     padding: 10px;
-    text-align: left;
 }
 
-/* Línea divisoria entre las celdas */
-.tweetsTable td, .tweetsTable th {
-    border-bottom: 1px solid #ddd;
+.tweetsTable .post-column {
+    text-align: justify;
+    white-space: normal;
+    width: 300px;
 }
 
-/* Estilo para los encabezados de la tabla */
-.tweetsTable th {
-    background-color: #4CAF50;
-    color: white;
-}
+    /* Updated rule to ensure "Post" column is justified */
+    .tweetsTable .post-column:not(.hidden) {
+        text-align: justify;
+    }
 
-/* Cambia el color de fondo de las celdas al pasar el mouse por encima */
-.tweetsTable tr:hover {
-    background-color: #f5f5f5;
-}
-
-/* Estilo para los botones */
-.tweetsTable .btn {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+@media (max-width: 768px) {
+    .tweetsTable .post-column {
+        display: none;
+    }
 }
